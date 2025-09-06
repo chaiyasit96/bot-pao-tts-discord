@@ -10,25 +10,72 @@
   </a>
 </div>
 
-###
+
 
 <h1 align="left">Text To Speech Bot Discord 👋</h1>
 
 ###
 
-<h3 align="left">👩‍💻  About Product</h3>
+## 👩‍💻  About Project
 
-###
+บอทที่จะอ่านข้อความใน Voice Channel ของ Discord โดยใช้เสียงจาก OpenAI API
+สิ่งที่ต้องใช้ใน Project
+- Discord Bot AppId (จะต้องทำการสร้าง Application ที่ Discord Developer Portal)
+- Discord Bot Token (จะต้องทำการสร้าง Application ที่ Discord Developer Portal)
+- OpenAI Secret Key (ได้จากการสร้าง Secret Key ที่ OpenAI Platform)
 
-<p align="left">I'm ... from ....<br><br>- 🔭 I’m working as ...<br>- 📚 I'm currently learning ...<br>- ⚡ In my free time I ...</p>
+## 👩‍💻  Run Locally
 
-###
+Clone project มาที่เครื่อง
 
-<h3 align="left">👩‍💻  Run Locally</h3>
+```bash
+  git clone https://github.com/chaiyasit96/bot-pao-tts-discord.git
+```
 
-###
+เข้าไปยัง Folder ของ Project
 
-<p align="left">I'm ... from ....<br><br>- 🔭 I’m working as ...<br>- 📚 I'm currently learning ...<br>- ⚡ In my free time I ...</p>
+```bash
+  cd bot-pao-tts-discord
+```
+สร้างไฟล์ .env และใส่ค่า
+
+```bash
+  BOT_PAO_TTS_DISCORD_DISCORD_TOKEN={Discord Bot Token ของคุณ}
+  BOT_PAO_TTS_DISCORD_OPENAI_API_KEY={OpenAI Secret Key ของคุณ}
+```
+ติดตั้ง dependencies
+
+```bash
+  npm install
+```
+
+Start server
+
+```bash
+  npm run start:dev
+```
+## 👩‍💻  Register Commands
+ก่อนที่จะใช้ Slash Command ของ Discord ได้จะต้องลงทะเบียนก่อน
+สามารถลงทะเบียนได้โดย Run Script นี้
+```bash
+    import { REST, Routes } from "discord.js";
+    const commands = [
+        {
+            name: 'join',
+            description: 'เรียกบอทเข้า Voice Channel',
+        },
+        {
+            name: 'leave',
+            description: 'ให้บอทออกจาก Voice Channel',
+        }
+    ];
+    
+    const rest = new REST().setToken({Discord Bot Token ของคุณ});
+    rest.put(
+        Routes.applicationCommands({Discord Bot AppId ของคุณ}),
+        { body: commands }
+    ).then(() => console.log("✅ Slash commands registered."));
+```
 
 ###
 
