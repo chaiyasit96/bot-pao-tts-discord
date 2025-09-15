@@ -2,14 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { OnEvent } from '@nestjs/event-emitter';
 import {
     CommandInteraction,
-    InteractionResponseType,
     InternalDiscordGatewayAdapterCreator,
     Message
 } from 'discord.js';
 import { TtsService } from 'src/tts/tts.service';
 import { joinVoiceChannel } from '@discordjs/voice';
 import { PlayerState } from 'src/tts/tts.dto';
-import { InteractionResponse } from 'node_modules/discord.js/typings/index.mjs';
 
 @Injectable()
 export class MessageListener {
