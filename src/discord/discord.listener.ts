@@ -62,7 +62,7 @@ export class MessageListener {
 
     @OnEvent('discord.command.leave')
     public async handleDiscordInteractionLeaveChannel(interaction: CommandInteraction): Promise<void> {
-        await interaction.deferReply({ ephemeral: true });
+        await interaction.deferReply();
         const { channelId, guildId, guild } = interaction;
         if (!interaction.isChatInputCommand() || interaction.user.bot) {
             await interaction.followUp({ content: 'เกิดข้อผิดพลาด' });
